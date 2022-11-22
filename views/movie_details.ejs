@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: red;
+      background-image: -webkit-linear-gradient(75deg, rgb(229, 119, 119) 75%, white 40%);
+      min-height: 99vh;
+      /* margin-top: 20px; */
+      
+      background-repeat: no-repeat;
+     
+    }
+
+    img {
+      border-radius: 20px;
+      border: 2px solid black;
+      box-shadow: 1px 1px 1px black;
+      filter: drop-shadow(0 0 0.75rem red);
+      width: 80%;
+      display: block;
+      margin: auto;
+      transition: 1.5s;
+    }
+    /* img:hover{
+      width:95%;
+      margin: auto;
+      margin-top: 20px;
+       
+        transition-timing-function:ease-in-out;
+    } */
+
+    .button_dark {
+      background-color: black;
+      border-radius: 20px;
+      color: white;
+      padding: 5px 20px;
+      display: inline-block;
+      margin: auto;
+      margin-top: 9px;
+      margin-bottom: 9px;
+      cursor:none;
+
+
+
+    }
+    .button_dark:hover{
+        background-color: white;
+        color:black;
+    }
+
+    .container-fluid h1 {
+      margin-top: 20px;
+    }
+    @media(max-width:500px) {
+      img{
+        width: 70%;
+      }
+        .container-fluid{
+            text-align: center;
+        }
+        li{
+            text-align: left;
+        }
+        
+    }
+    .btn{
+      margin: auto;
+      /* color: black; */
+      background-color: black;
+      display: block;
+      font-weight: bold;
+      border-radius: 20px;
+      transition: 1s;
+      width:60%;
+    }
+   
+    footer,nav{
+      background-color: black;
+      color: white;
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="text-center p-2 mb-5">
+    <h1>Movie Finder</h1>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <% url=object.Poster %>
+        <img src="<%=url%>" alt="">
+      </div>
+      <div class="col-md-6 offset-md-1 text-center">
+        <h1 class="display-1"><%= object.Title  %></h1>
+        <!-- <h3><%= object.Year  %></h3> -->
+        <h2>Released Date -: <%= object.Released %></h2>
+        <!-- <h4>Director Name -: <%= object.Director %></h4> -->
+
+        <h5>Runtime -: <%= object.Runtime %></h5>
+
+      </div>
+    </div>
+    
+    <h1>Plot</h1>
+    <h4> <%= object.Plot %></h4>
+    
+    <h1>Director</h1>
+    <% director_arr=(object.Director).split(",")%>
+    <% (director_arr).forEach(element => { %>
+    <button class="button_dark"><%= element %></button>
+    <%}); %>
+    
+    <h1>Writer</h1>
+    <% writer_arr=(object.Writer).split(",")%>
+    <% (writer_arr).forEach(element => { %>
+    <button class="button_dark"><%= element %></button>
+    <%}); %>
+    
+
+
+
+
+    <h1>Actors</h1>
+    <% actor_arr=(object.Actors).split(",") %>
+    <% (actor_arr).forEach(element => { %>
+    <button class="button_dark"><%= element %></button>
+    <%}); %> 
+
+    <h1>Genre</h1>
+    <% category_arr=(object.Genre).split(",") %>
+    <% (category_arr).forEach(element => { %>
+    <button class="button_dark"><%= element %></button>
+    <%}); %> 
+
+   
+
+    
+    <h1>Language</h1>
+    <% lang_arr=(object.Language).split(",") %>
+    <% (lang_arr).forEach(element => { %>
+    <button class="button_dark"><%= element %></button>
+    <% }); %>
+
+    <h1>Country</h1>
+
+    <% Country_arr=(object.Country).split(",") %>
+    <% (Country_arr).forEach(element => { %>
+    <button class="button_dark"><%= element %></button>
+    <%}); %>
+
+  
+      <h1>Awards</h1>
+
+      <h4><%= object.Awards %></h4>
+   
+    
+
+    <h1>Rating</h1>
+    <% (object.Ratings).forEach(element => { %>
+    <h4> <li><%= element.Source %> -: <%= element.Value %></li></h4>
+    <% }); %>
+    <h4><li> IMDB Rating -: <%= object.imdbRating %> / 10 with <%= object.imdbVotes  %> Votes</li> </h4>
+    <h4><li>Meta Score -: <%= object.Metascore %></li>  </h4> 
+
+ 
+    <% if((object.Boxoffice)!=null){ %>
+      <h1>Box Office Collection</h1>
+  
+      <h4><button class="button_dark"><%= object.BoxOffice %></button></h4>
+      
+      <% } %> 
+      
+      
+      <a href="/" class="btn btn-dark my-3">Back to Search</a> 
+  </div>
+  <footer class="text-center p-2">
+    <h3>Made By - Pranav Malpani</h3>
+   </footer>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+.container-fluid{
+    background-image: url(https://infoguidenigeria.com/wp-content/uploads/2021/10/netflix-library-photo-scaled-1.jpg),linear-gradient(100deg,gray,blue);
+    display: flex;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+   }
+   .row{
+       margin: auto;
+       color: white;
+       text-align: center;
+       filter: drop-shadow(0 0 3rem rgb(0, 0, 0));
+       /* font-size: 4rem; */
+   }
+   .row h1{
+       font-size: 4rem;
+       text-shadow: 1px 1px 1px black;
+       filter: drop-shadow(0 0 3rem rgb(0, 0, 0));
+   }
+   .row img{
+       width:50%;
+       margin: auto;
+
+
+   }
